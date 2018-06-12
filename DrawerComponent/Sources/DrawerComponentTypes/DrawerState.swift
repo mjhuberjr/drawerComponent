@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum DrawerState {
+public enum DrawerState {
     case closed
     case open
 }

@@ -18,11 +18,13 @@ protocol DrawerInteraction: class {
 
 class DrawerInteractor {
     
-    var presenter: DrawerComponentPresenter
+    var presenter: DrawerComponentPresentation
+    var drawerView: UIViewController
     var runningAnimators: [UIViewPropertyAnimator] = []
     
-    init(presenter: DrawerComponentPresenter) {
+    init(presenter: DrawerComponentPresentation, drawerView: UIViewController) {
         self.presenter = presenter
+        self.drawerView = drawerView
     }
     
 }

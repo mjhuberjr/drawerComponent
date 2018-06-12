@@ -13,6 +13,7 @@ class DrawerRootViewController: UIViewController {
     @IBOutlet var drawerView: UIView!
     
     private var presenter: DrawerComponentPresentation
+    var interactor: DrawerInteraction!
     
     init(presenter: DrawerComponentPresentation) {
         self.presenter = presenter
@@ -30,6 +31,8 @@ class DrawerRootViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setupInteractor()
     }
     
 }
@@ -37,6 +40,11 @@ class DrawerRootViewController: UIViewController {
 // MARK: - Private methods
 
 private extension DrawerRootViewController {
+    
+    func setupInteractor() {
+        let interactor = DrawerInteractor(presenter: presenter)
+        self.interactor = interactor
+    }
     
     func setupGestures() {
         
