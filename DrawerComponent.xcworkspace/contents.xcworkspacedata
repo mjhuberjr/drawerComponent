@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "container:DrawerComponent.xcodeproj">
+   </FileRef>
+   <Group
+      location = "group:Dependencies"
+      name = "Dependencies">
+      <FileRef
+         location = "group:../../op131Extensions/op131Extensions.xcodeproj">
+      </FileRef>
+   </Group>
+</Workspace>

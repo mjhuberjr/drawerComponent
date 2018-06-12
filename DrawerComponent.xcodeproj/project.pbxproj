@@ -9,8 +9,14 @@
 /* Begin PBXBuildFile section */
 		5E72F6CF20CCD7600036A542 /* DrawerComponent.h in Headers */ = {isa = PBXBuildFile; fileRef = 5E72F6CD20CCD7600036A542 /* DrawerComponent.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5E72F6D820CF64D00036A542 /* DrawerComponentCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E72F6D720CF64D00036A542 /* DrawerComponentCoordinator.swift */; };
-		5E72F6DA20CF64F00036A542 /* DrawerComponentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E72F6D920CF64F00036A542 /* DrawerComponentViewController.swift */; };
-		5E72F6DC20CF64FD0036A542 /* DrawerComponentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E72F6DB20CF64FD0036A542 /* DrawerComponentViewController.xib */; };
+		5E72F6DA20CF64F00036A542 /* DrawerRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E72F6D920CF64F00036A542 /* DrawerRootViewController.swift */; };
+		5E72F6DC20CF64FD0036A542 /* DrawerRootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E72F6DB20CF64FD0036A542 /* DrawerRootViewController.xib */; };
+		5E72F6DF20CF68860036A542 /* DrawerState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E72F6DE20CF68860036A542 /* DrawerState.swift */; };
+		5E72F6E120CF68960036A542 /* DrawerComponentClosures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E72F6E020CF68960036A542 /* DrawerComponentClosures.swift */; };
+		5E72F6E320CF68A50036A542 /* DrawerInteraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E72F6E220CF68A50036A542 /* DrawerInteraction.swift */; };
+		5E72F6E520CF68AB0036A542 /* DrawerEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E72F6E420CF68AB0036A542 /* DrawerEvents.swift */; };
+		5E72F6E720CF68BB0036A542 /* DrawerDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E72F6E620CF68BB0036A542 /* DrawerDataSource.swift */; };
+		5E72F6E920CF69090036A542 /* DrawerConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E72F6E820CF69090036A542 /* DrawerConfigurable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -18,8 +24,14 @@
 		5E72F6CD20CCD7600036A542 /* DrawerComponent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DrawerComponent.h; sourceTree = "<group>"; };
 		5E72F6CE20CCD7600036A542 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5E72F6D720CF64D00036A542 /* DrawerComponentCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerComponentCoordinator.swift; sourceTree = "<group>"; };
-		5E72F6D920CF64F00036A542 /* DrawerComponentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerComponentViewController.swift; sourceTree = "<group>"; };
-		5E72F6DB20CF64FD0036A542 /* DrawerComponentViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DrawerComponentViewController.xib; sourceTree = "<group>"; };
+		5E72F6D920CF64F00036A542 /* DrawerRootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerRootViewController.swift; sourceTree = "<group>"; };
+		5E72F6DB20CF64FD0036A542 /* DrawerRootViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DrawerRootViewController.xib; sourceTree = "<group>"; };
+		5E72F6DE20CF68860036A542 /* DrawerState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerState.swift; sourceTree = "<group>"; };
+		5E72F6E020CF68960036A542 /* DrawerComponentClosures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerComponentClosures.swift; sourceTree = "<group>"; };
+		5E72F6E220CF68A50036A542 /* DrawerInteraction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerInteraction.swift; sourceTree = "<group>"; };
+		5E72F6E420CF68AB0036A542 /* DrawerEvents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerEvents.swift; sourceTree = "<group>"; };
+		5E72F6E620CF68BB0036A542 /* DrawerDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerDataSource.swift; sourceTree = "<group>"; };
+		5E72F6E820CF69090036A542 /* DrawerConfigurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerConfigurable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +74,7 @@
 		5E72F6D520CF63E70036A542 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				5E72F6DD20CF68600036A542 /* DrawerComponentTypes */,
 				5E72F6D620CF64A60036A542 /* Root */,
 			);
 			path = Sources;
@@ -71,10 +84,23 @@
 			isa = PBXGroup;
 			children = (
 				5E72F6D720CF64D00036A542 /* DrawerComponentCoordinator.swift */,
-				5E72F6D920CF64F00036A542 /* DrawerComponentViewController.swift */,
-				5E72F6DB20CF64FD0036A542 /* DrawerComponentViewController.xib */,
+				5E72F6D920CF64F00036A542 /* DrawerRootViewController.swift */,
+				5E72F6DB20CF64FD0036A542 /* DrawerRootViewController.xib */,
 			);
 			path = Root;
+			sourceTree = "<group>";
+		};
+		5E72F6DD20CF68600036A542 /* DrawerComponentTypes */ = {
+			isa = PBXGroup;
+			children = (
+				5E72F6DE20CF68860036A542 /* DrawerState.swift */,
+				5E72F6E020CF68960036A542 /* DrawerComponentClosures.swift */,
+				5E72F6E220CF68A50036A542 /* DrawerInteraction.swift */,
+				5E72F6E420CF68AB0036A542 /* DrawerEvents.swift */,
+				5E72F6E620CF68BB0036A542 /* DrawerDataSource.swift */,
+				5E72F6E820CF69090036A542 /* DrawerConfigurable.swift */,
+			);
+			path = DrawerComponentTypes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -146,7 +172,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5E72F6DC20CF64FD0036A542 /* DrawerComponentViewController.xib in Resources */,
+				5E72F6DC20CF64FD0036A542 /* DrawerRootViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -157,8 +183,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E72F6E120CF68960036A542 /* DrawerComponentClosures.swift in Sources */,
+				5E72F6E920CF69090036A542 /* DrawerConfigurable.swift in Sources */,
+				5E72F6DF20CF68860036A542 /* DrawerState.swift in Sources */,
+				5E72F6E720CF68BB0036A542 /* DrawerDataSource.swift in Sources */,
 				5E72F6D820CF64D00036A542 /* DrawerComponentCoordinator.swift in Sources */,
-				5E72F6DA20CF64F00036A542 /* DrawerComponentViewController.swift in Sources */,
+				5E72F6E320CF68A50036A542 /* DrawerInteraction.swift in Sources */,
+				5E72F6DA20CF64F00036A542 /* DrawerRootViewController.swift in Sources */,
+				5E72F6E520CF68AB0036A542 /* DrawerEvents.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,5 +1,5 @@
 //
-//  DrawerComponentViewController.swift
+//  DrawerState.swift
 //  DrawerComponent
 //
 //  Created by Michael J. Huber Jr. on 6/11/18.
