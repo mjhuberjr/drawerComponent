@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import op131Extensions
 
 public protocol DrawerDataSource {
     
@@ -27,7 +28,7 @@ class PrototypeDrawer: DrawerDataSource {
         let label = UILabel()
         label.textAlignment = .center
         vc.view.addSubview(label)
-        
+        label.pinToEdges(of: vc.view)
     }
     
 }

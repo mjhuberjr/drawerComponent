@@ -7,3 +7,20 @@
 //
 
 import Foundation
+
+protocol DrawerInteraction: class {
+    
+    func openDrawer()
+    func closeDrawer()
+    
+}
+
+class DrawerInteractor {
+    
+    var presenter: DrawerComponentPresenter
+    
+    init(presenter: DrawerComponentPresenter) {
+        self.presenter = presenter
+    }
+    
+}
