@@ -23,11 +23,13 @@ class DrawerComponentPresenter: DrawerComponentPresentation {
     var drawerConfiguration: DrawerConfigurable
     
     var state: DrawerState
+    var transition: DrawerTransition
     
-    init(dataSource: DrawerDataSource, drawerConfiguration: DrawerConfigurable, startingState: DrawerState) {
+    init(dataSource: DrawerDataSource, drawerConfiguration: DrawerConfigurable, startingState: DrawerState, nextTransition: DrawerTransition) {
         self.dataSource = dataSource
         self.drawerConfiguration = drawerConfiguration
         self.state = startingState
+        self.transition = nextTransition
     }
     
 }

@@ -8,6 +8,11 @@
 
 import Foundation
 
+enum DrawerTransition {
+    case closing
+    case opening
+}
+
 enum DrawerState {
     case closed
     case open
@@ -15,6 +20,7 @@ enum DrawerState {
 }
 
 extension DrawerState {
+    
     var opening: DrawerState {
         switch self {
         case .closed: return .open
@@ -30,4 +36,5 @@ extension DrawerState {
         case .maxOpen: return .open
         }
     }
+    
 }
