@@ -12,7 +12,11 @@ class DrawerRootViewController: UIViewController {
     
     @IBOutlet var drawerView: UIView!
     
-    init() {
+    private var presenter: DrawerComponentPresentation
+    
+    init(presenter: DrawerComponentPresentation) {
+        self.presenter = presenter
+        
         let bundle = Bundle(for: DrawerRootViewController.self)
         super.init(nibName: nil, bundle: bundle)
     }
@@ -34,6 +38,8 @@ class DrawerRootViewController: UIViewController {
 
 private extension DrawerRootViewController {
     
-    
+    func setupGestures() {
+        
+    }
     
 }

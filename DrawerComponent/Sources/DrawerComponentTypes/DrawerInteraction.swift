@@ -12,6 +12,7 @@ protocol DrawerInteraction: class {
     
     func openDrawer()
     func closeDrawer()
+    func panDrawer(recognizer: UIPanGestureRecognizer)
     
 }
 
@@ -21,6 +22,30 @@ class DrawerInteractor {
     
     init(presenter: DrawerComponentPresenter) {
         self.presenter = presenter
+    }
+    
+}
+
+extension DrawerInteractor: DrawerInteraction {
+    
+    func openDrawer() {
+        
+    }
+    
+    func closeDrawer() {
+        
+    }
+    
+    func panDrawer(recognizer: UIPanGestureRecognizer) {
+        switch recognizer.state {
+        case .began:
+            break
+        case .changed:
+            break
+        case .ended:
+            break
+        default: break
+        }
     }
     
 }
