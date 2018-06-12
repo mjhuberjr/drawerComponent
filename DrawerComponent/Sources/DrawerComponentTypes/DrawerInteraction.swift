@@ -42,7 +42,7 @@ extension DrawerInteractor: DrawerInteraction {
     @objc func panDrawer(recognizer: UIPanGestureRecognizer) {
         switch recognizer.state {
         case .began:
-            animateIfNeeded(to: presenter.transition, duration: 1)
+            animateIfNeeded(to: presenter.state, duration: 1)
             
         case .changed:
             break
@@ -58,7 +58,7 @@ extension DrawerInteractor: DrawerInteraction {
 
 private extension DrawerInteractor {
     
-    func animateIfNeeded(to transition: DrawerTransition, duration: TimeInterval) {
+    func animateIfNeeded(to transition: DrawerState, duration: TimeInterval) {
         guard runningAnimators.isEmpty else { return }
     }
     

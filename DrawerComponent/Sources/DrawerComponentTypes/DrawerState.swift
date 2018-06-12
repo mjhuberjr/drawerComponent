@@ -8,32 +8,17 @@
 
 import Foundation
 
-enum DrawerTransition {
-    case closing
-    case opening
-}
-
 enum DrawerState {
     case closed
     case open
-    case maxOpen
 }
 
 extension DrawerState {
     
-    var opening: DrawerState {
+    var next: DrawerState {
         switch self {
-        case .closed: return .open
-        case .open: return .maxOpen
-        case .maxOpen: return .maxOpen
-        }
-    }
-    
-    var closing: DrawerState {
-        switch self {
-        case .closed: return .closed
         case .open: return .closed
-        case .maxOpen: return .open
+        case .closed: return .open
         }
     }
     
