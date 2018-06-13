@@ -19,6 +19,7 @@
 		5E72F6E920CF69090036A542 /* DrawerConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E72F6E820CF69090036A542 /* DrawerConfigurable.swift */; };
 		5E72F6ED20CF738D0036A542 /* op131Extensions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E72F6EC20CF738D0036A542 /* op131Extensions.framework */; };
 		5E72F6EF20CF76910036A542 /* DrawerComponentPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E72F6EE20CF76910036A542 /* DrawerComponentPresenter.swift */; };
+		5E72F6F120D0C1FD0036A542 /* DrawerPanGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E72F6F020D0C1FD0036A542 /* DrawerPanGestureRecognizer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		5E72F6E820CF69090036A542 /* DrawerConfigurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerConfigurable.swift; sourceTree = "<group>"; };
 		5E72F6EC20CF738D0036A542 /* op131Extensions.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = op131Extensions.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E72F6EE20CF76910036A542 /* DrawerComponentPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerComponentPresenter.swift; sourceTree = "<group>"; };
+		5E72F6F020D0C1FD0036A542 /* DrawerPanGestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerPanGestureRecognizer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 			children = (
 				5E72F6DE20CF68860036A542 /* DrawerState.swift */,
 				5E72F6E020CF68960036A542 /* DrawerComponentClosures.swift */,
+				5E72F6F020D0C1FD0036A542 /* DrawerPanGestureRecognizer.swift */,
 				5E72F6E220CF68A50036A542 /* DrawerInteraction.swift */,
 				5E72F6E420CF68AB0036A542 /* DrawerEvents.swift */,
 				5E72F6E620CF68BB0036A542 /* DrawerDataSource.swift */,
@@ -206,6 +209,7 @@
 				5E72F6E320CF68A50036A542 /* DrawerInteraction.swift in Sources */,
 				5E72F6EF20CF76910036A542 /* DrawerComponentPresenter.swift in Sources */,
 				5E72F6DA20CF64F00036A542 /* DrawerRootViewController.swift in Sources */,
+				5E72F6F120D0C1FD0036A542 /* DrawerPanGestureRecognizer.swift in Sources */,
 				5E72F6E520CF68AB0036A542 /* DrawerEvents.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -47,9 +47,9 @@ private extension DrawerRootViewController {
         let drawerConfiguration = presenter.drawerConfiguration
         switch presenter.state {
         case .open:
-            bottomConstraint = drawerConfiguration.closedOffset
+            bottomConstraint.constant = drawerConfiguration.closedOffset
         case .closed:
-            bottomConstraint = drawerConfiguration.openOffset
+            bottomConstraint.constant = drawerConfiguration.openOffset
         }
     }
     
@@ -59,7 +59,8 @@ private extension DrawerRootViewController {
     }
     
     func setupGestures() {
-        
+        let panGesture = DrawerPanGestureRecognizer(target: self, action: #selector(interactor.drawerPanned(recognizer:)))
+        drawerView.addGestureRecognizer(panGesture)
     }
     
 }

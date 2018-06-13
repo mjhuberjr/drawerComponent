@@ -8,11 +8,10 @@
 
 import Foundation
 
-protocol DrawerInteraction: class {
+@objc protocol DrawerInteraction: class {
     
-    func openDrawer()
-    func closeDrawer()
-    func panDrawer(recognizer: UIPanGestureRecognizer)
+    func toggleDrawer()
+    @objc func drawerPanned(recognizer: UIPanGestureRecognizer)
     
 }
 
@@ -37,26 +36,25 @@ class DrawerInteractor {
 
 extension DrawerInteractor: DrawerInteraction {
     
-    func openDrawer() {
-        
+    func toggleDrawer() {
+        animateIfNeeded(to: presenter.state, duration: 1)
+        runningAnimators.forEach { $0.pauseAnimation() }
+        animationProgress = runningAnimators.map { $0.fractionComplete }
     }
     
-    func closeDrawer() {
-        
-    }
-    
-    @objc func panDrawer(recognizer: UIPanGestureRecognizer) {
+    @objc func drawerPanned(recognizer: UIPanGestureRecognizer) {
         switch recognizer.state {
         case .began:
-            
-            animateIfNeeded(to: presenter.state, duration: 1)
-            runningAnimators.forEach { $0.pauseAnimation() }
-            animationProgress = runningAnimators.map { $0.fractionComplete }
-            
+            panBegan()
         case .changed:
-            break
+            panChanged(recognizer)
         case .ended:
-            break
+            
+            let yVelocity = recognizer.velocity(in: drawerView.view).y
+            let shouldClose = yVelocity > 0
+            if panShouldEndEarly(yVelocity) { break }
+            panEnded(recognizer, shouldClose: shouldClose)
+            
         default: break
         }
     }
@@ -66,6 +64,57 @@ extension DrawerInteractor: DrawerInteraction {
 // MARK: Private methods
 
 private extension DrawerInteractor {
+    
+    func panBegan() {
+        toggleDrawer()
+    }
+    
+    func panChanged(_ recognizer: UIPanGestureRecognizer) {
+        let openOffset = presenter.drawerConfiguration.openOffset
+        
+        let translation = recognizer.translation(in: drawerView.view)
+        var fraction = -translation.y / openOffset
+        
+        if presenter.state == .open { fraction *= -1 }
+        if runningAnimators[0].isReversed { fraction *= -1 }
+        
+        for (index, animator) in runningAnimators.enumerated() {
+            animator.fractionComplete = fraction + animationProgress[index]
+        }
+    }
+    
+    func panShouldEndEarly(_ velocity: CGFloat) -> Bool {
+        if velocity == 0 {
+            continueAnimations()
+            return true
+        }
+        return false
+    }
+    
+    func panEnded(_ recognizer: UIPanGestureRecognizer, shouldClose: Bool) {
+        switch presenter.state {
+        case .open:
+            reverseOpen(shouldClose: shouldClose)
+        case .closed:
+            reverseClose(shouldClose: shouldClose)
+        }
+        
+        continueAnimations()
+    }
+    
+    func continueAnimations() {
+        runningAnimators.forEach { $0.continueAnimation(withTimingParameters: nil, durationFactor: 0) }
+    }
+    
+    func reverseOpen(shouldClose: Bool) {
+        if !shouldClose && !runningAnimators[0].isReversed { runningAnimators.forEach { $0.isReversed = !$0.isReversed } }
+        if shouldClose && runningAnimators[0].isReversed { runningAnimators.forEach { $0.isReversed = !$0.isReversed } }
+    }
+    
+    func reverseClose(shouldClose: Bool) {
+        if shouldClose && !runningAnimators[0].isReversed { runningAnimators.forEach { $0.isReversed = !$0.isReversed } }
+        if !shouldClose && runningAnimators[0].isReversed { runningAnimators.forEach { $0.isReversed = !$0.isReversed } }
+    }
     
     func animateIfNeeded(to transition: DrawerState, duration: TimeInterval) {
         guard runningAnimators.isEmpty else { return }
