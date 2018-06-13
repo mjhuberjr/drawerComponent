@@ -29,6 +29,7 @@ class PrototypeDrawer: DrawerDataSource {
     func setup(_ vc: UIViewController) {
         let label = UILabel()
         label.textAlignment = .center
+        label.text = "Welcome"
         vc.view.addSubview(label)
         label.pinToEdges(of: vc.view)
     }

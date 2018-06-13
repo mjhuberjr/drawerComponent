@@ -13,8 +13,7 @@ public protocol DrawerComponentCoordination: class {
     func drawerComponentViewController() -> UIViewController
     
     // MARK: - Interactions
-    func openDrawer()
-    func closeDrawer()
+    func toggleDrawer()
     
 }
 
@@ -49,12 +48,8 @@ public class DrawerComponentCoordinator: DrawerComponentCoordination {
 
 extension DrawerComponentCoordinator {
     
-    public func openDrawer() {
-        
-    }
-    
-    public func closeDrawer() {
-        
+    public func toggleDrawer() {
+        interactor?.toggleDrawer()
     }
     
 }

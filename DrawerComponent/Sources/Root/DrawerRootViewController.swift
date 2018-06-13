@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import op131Extensions
 
 class DrawerRootViewController: UIViewController {
     
@@ -33,8 +34,10 @@ class DrawerRootViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupDrawerView()
         setupStartingPosition()
         setupInteractor()
+        setupGestures()
     }
     
 }
@@ -42,6 +45,11 @@ class DrawerRootViewController: UIViewController {
 // MARK: - Private methods
 
 private extension DrawerRootViewController {
+    
+    func setupDrawerView() {
+        let drawer = presenter.dataSource.drawerView
+        embed(drawer, into: drawerView)
+    }
     
     func setupStartingPosition() {
         let drawerConfiguration = presenter.drawerConfiguration

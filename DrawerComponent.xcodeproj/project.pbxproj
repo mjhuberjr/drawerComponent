@@ -22,6 +22,16 @@
 		5E72F6F120D0C1FD0036A542 /* DrawerPanGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E72F6F020D0C1FD0036A542 /* DrawerPanGestureRecognizer.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		5E72F71F20D0C5B40036A542 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5E72F71B20D0C5B40036A542 /* op131Extensions.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 5EF61E9D20B4B02200E0371E;
+			remoteInfo = op131Extensions;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		5E72F6CA20CCD7600036A542 /* DrawerComponent.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DrawerComponent.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E72F6CD20CCD7600036A542 /* DrawerComponent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DrawerComponent.h; sourceTree = "<group>"; };
@@ -38,6 +48,7 @@
 		5E72F6EC20CF738D0036A542 /* op131Extensions.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = op131Extensions.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E72F6EE20CF76910036A542 /* DrawerComponentPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerComponentPresenter.swift; sourceTree = "<group>"; };
 		5E72F6F020D0C1FD0036A542 /* DrawerPanGestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerPanGestureRecognizer.swift; sourceTree = "<group>"; };
+		5E72F71B20D0C5B40036A542 /* op131Extensions.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = op131Extensions.xcodeproj; path = ../../op131Extensions/op131Extensions.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,9 +127,18 @@
 		5E72F6EB20CF73550036A542 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5E72F71B20D0C5B40036A542 /* op131Extensions.xcodeproj */,
 				5E72F6EC20CF738D0036A542 /* op131Extensions.framework */,
 			);
 			path = Frameworks;
+			sourceTree = "<group>";
+		};
+		5E72F71C20D0C5B40036A542 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5E72F72020D0C5B40036A542 /* op131Extensions.framework */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -178,12 +198,28 @@
 			mainGroup = 5E72F6C020CCD7600036A542;
 			productRefGroup = 5E72F6CB20CCD7600036A542 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 5E72F71C20D0C5B40036A542 /* Products */;
+					ProjectRef = 5E72F71B20D0C5B40036A542 /* op131Extensions.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				5E72F6C920CCD7600036A542 /* DrawerComponent */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		5E72F72020D0C5B40036A542 /* op131Extensions.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = op131Extensions.framework;
+			remoteRef = 5E72F71F20D0C5B40036A542 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		5E72F6C820CCD7600036A542 /* Resources */ = {
