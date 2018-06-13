@@ -20,11 +20,15 @@ class DrawerInteractor {
     
     var presenter: DrawerComponentPresentation
     var drawerView: UIViewController
-    var runningAnimators: [UIViewPropertyAnimator] = []
     
-    init(presenter: DrawerComponentPresentation, drawerView: UIViewController) {
+    // MARK: - Animation properties
+    
+    var runningAnimators: [UIViewPropertyAnimator] = []
+    var animationProgress: [CGFloat] = []
+    
+    init(presenter: DrawerComponentPresentation) {
         self.presenter = presenter
-        self.drawerView = drawerView
+        self.drawerView = presenter.dataSource.drawerView
     }
     
 }
@@ -44,7 +48,10 @@ extension DrawerInteractor: DrawerInteraction {
     @objc func panDrawer(recognizer: UIPanGestureRecognizer) {
         switch recognizer.state {
         case .began:
+            
             animateIfNeeded(to: presenter.state, duration: 1)
+            runningAnimators.forEach { $0.pauseAnimation() }
+            animationProgress = runningAnimators.map { $0.fractionComplete }
             
         case .changed:
             break
@@ -62,6 +69,46 @@ private extension DrawerInteractor {
     
     func animateIfNeeded(to transition: DrawerState, duration: TimeInterval) {
         guard runningAnimators.isEmpty else { return }
+        let transitionAnimator = UIViewPropertyAnimator(duration: duration, dampingRatio: 1.0) {
+            switch self.presenter.state {
+            case .open:
+                // TODO: Bring view to open position
+                break
+            case .closed:
+                // TODO: Bring view to closed position
+                break
+            }
+            self.drawerView.view.layoutIfNeeded()
+        }
+        
+        transitionAnimator.addCompletion { position in
+            switch position {
+            case .start:
+                self.presenter.state = transition.next
+            case .end:
+                self.presenter.state = transition
+            case .current: break
+            }
+            
+            switch self.presenter.state {
+            case .open: break
+                // TODO: Reset to zero (or closed)
+            case .closed: break
+                // TODO: Reset to open (using offset)
+            }
+            
+            self.runningAnimators.removeAll()
+        }
+        
+        setup(animator: transitionAnimator)
+        
+        presenter.dataSource.propertyAnimators?.forEach { setup(animator: $0) }
+    }
+    
+    func setup(animator: UIViewPropertyAnimator) {
+        animator.scrubsLinearly = false
+        animator.startAnimation()
+        self.runningAnimators.append(animator)
     }
     
 }

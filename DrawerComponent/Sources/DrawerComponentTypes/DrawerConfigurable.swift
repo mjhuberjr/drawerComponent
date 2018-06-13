@@ -13,7 +13,6 @@ class DrawerEventsImpl: DrawerEvents { init() { } }
 public protocol DrawerConfigurable {
     
     var drawerEvents: DrawerEvents { get }
-    var maxOpenOffset: CGFloat { get }
     var openOffset: CGFloat { get }
     var closedOffset: CGFloat { get }
     
@@ -22,7 +21,6 @@ public protocol DrawerConfigurable {
 extension DrawerConfigurable {
     
     var drawerEvents: DrawerEvents { return DrawerEventsImpl() }
-    var maxOpenOffset: CGFloat { return 0.0 }
     var openOffset: CGFloat { return 0.0 }
     var closedOffset: CGFloat { return 0.0 }
     

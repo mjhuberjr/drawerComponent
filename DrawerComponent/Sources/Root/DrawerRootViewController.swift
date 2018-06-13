@@ -11,6 +11,7 @@ import UIKit
 class DrawerRootViewController: UIViewController {
     
     @IBOutlet var drawerView: UIView!
+    @IBOutlet var bottomConstraint: NSLayoutConstraint!
     
     private var presenter: DrawerComponentPresentation
     var interactor: DrawerInteraction!
@@ -32,6 +33,7 @@ class DrawerRootViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupStartingPosition()
         setupInteractor()
     }
     
@@ -40,6 +42,16 @@ class DrawerRootViewController: UIViewController {
 // MARK: - Private methods
 
 private extension DrawerRootViewController {
+    
+    func setupStartingPosition() {
+        let drawerConfiguration = presenter.drawerConfiguration
+        switch presenter.state {
+        case .open:
+            bottomConstraint = drawerConfiguration.closedOffset
+        case .closed:
+            bottomConstraint = drawerConfiguration.openOffset
+        }
+    }
     
     func setupInteractor() {
         let interactor = DrawerInteractor(presenter: presenter)

@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DrawerRootViewController" customModule="DrawerComponent" customModuleProvider="target">
             <connections>
+                <outlet property="bottomConstraint" destination="ggf-eL-xYD" id="Gry-Yv-y3J"/>
                 <outlet property="drawerView" destination="7Dh-uB-6KV" id="a4X-Yu-t1z"/>
             </connections>
         </placeholder>
@@ -30,7 +31,7 @@
                 <constraint firstItem="7Dh-uB-6KV" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="1fM-GP-LEd"/>
                 <constraint firstItem="7Dh-uB-6KV" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="Uae-iO-GFK"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="7Dh-uB-6KV" secondAttribute="trailing" id="g2i-V0-Hx8"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="7Dh-uB-6KV" secondAttribute="bottom" id="ggf-eL-xYD"/>
+                <constraint firstAttribute="bottom" secondItem="7Dh-uB-6KV" secondAttribute="bottom" id="ggf-eL-xYD"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
         </view>

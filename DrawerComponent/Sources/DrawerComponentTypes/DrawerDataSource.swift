@@ -12,12 +12,14 @@ import op131Extensions
 public protocol DrawerDataSource {
     
     var drawerView: UIViewController { get }
+    var propertyAnimators: [UIViewPropertyAnimator]? { get }
     
 }
 
 class PrototypeDrawer: DrawerDataSource {
     
     var drawerView: UIViewController
+    var propertyAnimators: [UIViewPropertyAnimator]? = nil
     
     init() {
         drawerView = UIViewController()
