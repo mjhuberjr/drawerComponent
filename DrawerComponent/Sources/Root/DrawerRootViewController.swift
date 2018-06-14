@@ -9,6 +9,15 @@
 import UIKit
 import op131Extensions
 
+public protocol DrawerAnimatable: class {
+    
+    var bottomConstraint: NSLayoutConstraint! { get set }
+    var view: UIView! { get set }
+    
+}
+
+public extension DrawerAnimatable where Self: UIViewController { }
+
 class DrawerRootViewController: UIViewController {
     
     @IBOutlet var drawerView: UIView!
@@ -55,20 +64,41 @@ private extension DrawerRootViewController {
         let drawerConfiguration = presenter.drawerConfiguration
         switch presenter.state {
         case .open:
-            bottomConstraint.constant = drawerConfiguration.closedOffset
-        case .closed:
             bottomConstraint.constant = drawerConfiguration.openOffset
+        case .closed:
+            bottomConstraint.constant = drawerConfiguration.closedOffset
         }
     }
     
     func setupInteractor() {
-        let interactor = DrawerInteractor(presenter: presenter)
+        let interactor = DrawerInteractor(presenter: presenter, drawerView: self)
         self.interactor = interactor
     }
     
     func setupGestures() {
-        let panGesture = DrawerPanGestureRecognizer(target: self, action: #selector(interactor.drawerPanned(recognizer:)))
+        let panGesture = DrawerPanGestureRecognizer(target: self, action: #selector(drawerPanned(recognizer:)))
         drawerView.addGestureRecognizer(panGesture)
     }
     
+    @objc func drawerPanned(recognizer: UIPanGestureRecognizer) {
+        switch recognizer.state {
+        case .began:
+            interactor.panBegan()
+        case .changed:
+            interactor.panChanged(recognizer)
+        case .ended:
+            
+            let yVelocity = recognizer.velocity(in: drawerView).y
+            let shouldClose = yVelocity > 0
+            if interactor.panShouldEndEarly(yVelocity) { break }
+            interactor.panEnded(recognizer, shouldClose: shouldClose)
+            
+        default: break
+        }
+    }
+    
 }
+
+// MARK: DrawerAnimatable
+
+extension DrawerRootViewController: DrawerAnimatable { }

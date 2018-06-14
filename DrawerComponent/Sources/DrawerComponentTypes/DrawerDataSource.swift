@@ -30,7 +30,10 @@ class PrototypeDrawer: DrawerDataSource {
         let label = UILabel()
         label.textAlignment = .center
         label.text = "Welcome"
+        
         vc.view.addSubview(label)
+        vc.view.backgroundColor = .orange
+        
         label.pinToEdges(of: vc.view)
     }
     

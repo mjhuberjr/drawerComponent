@@ -8,26 +8,29 @@
 
 import Foundation
 
-@objc protocol DrawerInteraction: class {
+protocol DrawerInteraction: class {
     
+    func panBegan()
+    func panChanged(_ recognizer: UIPanGestureRecognizer)
+    func panShouldEndEarly(_ velocity: CGFloat) -> Bool
+    func panEnded(_ recognizer: UIPanGestureRecognizer, shouldClose: Bool)
     func toggleDrawer()
-    @objc func drawerPanned(recognizer: UIPanGestureRecognizer)
     
 }
 
 class DrawerInteractor {
     
     var presenter: DrawerComponentPresentation
-    var drawerView: UIViewController
+    var drawerView: DrawerAnimatable
     
     // MARK: - Animation properties
     
     var runningAnimators: [UIViewPropertyAnimator] = []
     var animationProgress: [CGFloat] = []
     
-    init(presenter: DrawerComponentPresentation) {
+    init(presenter: DrawerComponentPresentation, drawerView: DrawerAnimatable) {
         self.presenter = presenter
-        self.drawerView = presenter.dataSource.drawerView
+        self.drawerView = drawerView
     }
     
 }
@@ -35,35 +38,6 @@ class DrawerInteractor {
 // MARK: - Drawer Interaction
 
 extension DrawerInteractor: DrawerInteraction {
-    
-    func toggleDrawer() {
-        animateIfNeeded(to: presenter.state, duration: 1)
-        runningAnimators.forEach { $0.pauseAnimation() }
-        animationProgress = runningAnimators.map { $0.fractionComplete }
-    }
-    
-    @objc func drawerPanned(recognizer: UIPanGestureRecognizer) {
-        switch recognizer.state {
-        case .began:
-            panBegan()
-        case .changed:
-            panChanged(recognizer)
-        case .ended:
-            
-            let yVelocity = recognizer.velocity(in: drawerView.view).y
-            let shouldClose = yVelocity > 0
-            if panShouldEndEarly(yVelocity) { break }
-            panEnded(recognizer, shouldClose: shouldClose)
-            
-        default: break
-        }
-    }
-    
-}
-
-// MARK: Private methods
-
-private extension DrawerInteractor {
     
     func panBegan() {
         toggleDrawer()
@@ -102,6 +76,18 @@ private extension DrawerInteractor {
         continueAnimations()
     }
     
+    func toggleDrawer() {
+        animateIfNeeded(to: presenter.state.next, duration: 1)
+        runningAnimators.forEach { $0.pauseAnimation() }
+        animationProgress = runningAnimators.map { $0.fractionComplete }
+    }
+    
+}
+
+// MARK: Private methods
+
+private extension DrawerInteractor {
+    
     func continueAnimations() {
         runningAnimators.forEach { $0.continueAnimation(withTimingParameters: nil, durationFactor: 0) }
     }
@@ -118,14 +104,15 @@ private extension DrawerInteractor {
     
     func animateIfNeeded(to transition: DrawerState, duration: TimeInterval) {
         guard runningAnimators.isEmpty else { return }
+        
+        let configuration = self.presenter.drawerConfiguration
+        
         let transitionAnimator = UIViewPropertyAnimator(duration: duration, dampingRatio: 1.0) {
             switch self.presenter.state {
             case .open:
-                // TODO: Bring view to open position
-                break
+                self.updateConstraint(configuration.closedOffset)
             case .closed:
-                // TODO: Bring view to closed position
-                break
+                self.updateConstraint(configuration.openOffset)
             }
             self.drawerView.view.layoutIfNeeded()
         }
@@ -140,22 +127,26 @@ private extension DrawerInteractor {
             }
             
             switch self.presenter.state {
-            case .open: break
-                // TODO: Reset to zero (or closed)
-            case .closed: break
-                // TODO: Reset to open (using offset)
+            case .open:
+                self.updateConstraint(configuration.openOffset)
+            case .closed:
+                self.updateConstraint(configuration.closedOffset)
             }
             
             self.runningAnimators.removeAll()
         }
         
-        setup(animator: transitionAnimator)
+        setup(animator: transitionAnimator, scrubsLinearly: true)
         
         presenter.dataSource.propertyAnimators?.forEach { setup(animator: $0) }
     }
     
-    func setup(animator: UIViewPropertyAnimator) {
-        animator.scrubsLinearly = false
+    func updateConstraint(_ offset: CGFloat) {
+        drawerView.bottomConstraint.constant = offset
+    }
+    
+    func setup(animator: UIViewPropertyAnimator, scrubsLinearly: Bool = false) {
+        animator.scrubsLinearly = scrubsLinearly
         animator.startAnimation()
         self.runningAnimators.append(animator)
     }
