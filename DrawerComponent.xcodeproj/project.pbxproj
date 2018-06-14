@@ -17,20 +17,11 @@
 		5E72F6E520CF68AB0036A542 /* DrawerEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E72F6E420CF68AB0036A542 /* DrawerEvents.swift */; };
 		5E72F6E720CF68BB0036A542 /* DrawerDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E72F6E620CF68BB0036A542 /* DrawerDataSource.swift */; };
 		5E72F6E920CF69090036A542 /* DrawerConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E72F6E820CF69090036A542 /* DrawerConfigurable.swift */; };
-		5E72F6ED20CF738D0036A542 /* op131Extensions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E72F6EC20CF738D0036A542 /* op131Extensions.framework */; };
 		5E72F6EF20CF76910036A542 /* DrawerComponentPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E72F6EE20CF76910036A542 /* DrawerComponentPresenter.swift */; };
 		5E72F6F120D0C1FD0036A542 /* DrawerPanGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E72F6F020D0C1FD0036A542 /* DrawerPanGestureRecognizer.swift */; };
+		5E72F72920D302100036A542 /* UIViewController+Embed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E72F72720D302100036A542 /* UIViewController+Embed.swift */; };
+		5E72F72A20D302100036A542 /* UIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E72F72820D302100036A542 /* UIView+Constraints.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		5E72F71F20D0C5B40036A542 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 5E72F71B20D0C5B40036A542 /* op131Extensions.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 5EF61E9D20B4B02200E0371E;
-			remoteInfo = op131Extensions;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		5E72F6CA20CCD7600036A542 /* DrawerComponent.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DrawerComponent.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -45,10 +36,10 @@
 		5E72F6E420CF68AB0036A542 /* DrawerEvents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerEvents.swift; sourceTree = "<group>"; };
 		5E72F6E620CF68BB0036A542 /* DrawerDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerDataSource.swift; sourceTree = "<group>"; };
 		5E72F6E820CF69090036A542 /* DrawerConfigurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerConfigurable.swift; sourceTree = "<group>"; };
-		5E72F6EC20CF738D0036A542 /* op131Extensions.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = op131Extensions.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E72F6EE20CF76910036A542 /* DrawerComponentPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerComponentPresenter.swift; sourceTree = "<group>"; };
 		5E72F6F020D0C1FD0036A542 /* DrawerPanGestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerPanGestureRecognizer.swift; sourceTree = "<group>"; };
-		5E72F71B20D0C5B40036A542 /* op131Extensions.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = op131Extensions.xcodeproj; path = ../../op131Extensions/op131Extensions.xcodeproj; sourceTree = "<group>"; };
+		5E72F72720D302100036A542 /* UIViewController+Embed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Embed.swift"; sourceTree = "<group>"; };
+		5E72F72820D302100036A542 /* UIView+Constraints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Constraints.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,7 +47,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5E72F6ED20CF738D0036A542 /* op131Extensions.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -95,6 +85,7 @@
 			children = (
 				5E72F6DD20CF68600036A542 /* DrawerComponentTypes */,
 				5E72F6D620CF64A60036A542 /* Root */,
+				5E72F72620D302100036A542 /* Extensions */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -127,18 +118,17 @@
 		5E72F6EB20CF73550036A542 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				5E72F71B20D0C5B40036A542 /* op131Extensions.xcodeproj */,
-				5E72F6EC20CF738D0036A542 /* op131Extensions.framework */,
 			);
 			path = Frameworks;
 			sourceTree = "<group>";
 		};
-		5E72F71C20D0C5B40036A542 /* Products */ = {
+		5E72F72620D302100036A542 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				5E72F72020D0C5B40036A542 /* op131Extensions.framework */,
+				5E72F72720D302100036A542 /* UIViewController+Embed.swift */,
+				5E72F72820D302100036A542 /* UIView+Constraints.swift */,
 			);
-			name = Products;
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -198,28 +188,12 @@
 			mainGroup = 5E72F6C020CCD7600036A542;
 			productRefGroup = 5E72F6CB20CCD7600036A542 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 5E72F71C20D0C5B40036A542 /* Products */;
-					ProjectRef = 5E72F71B20D0C5B40036A542 /* op131Extensions.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				5E72F6C920CCD7600036A542 /* DrawerComponent */,
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		5E72F72020D0C5B40036A542 /* op131Extensions.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = op131Extensions.framework;
-			remoteRef = 5E72F71F20D0C5B40036A542 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		5E72F6C820CCD7600036A542 /* Resources */ = {
@@ -240,6 +214,8 @@
 				5E72F6E120CF68960036A542 /* DrawerComponentClosures.swift in Sources */,
 				5E72F6E920CF69090036A542 /* DrawerConfigurable.swift in Sources */,
 				5E72F6DF20CF68860036A542 /* DrawerState.swift in Sources */,
+				5E72F72A20D302100036A542 /* UIView+Constraints.swift in Sources */,
+				5E72F72920D302100036A542 /* UIViewController+Embed.swift in Sources */,
 				5E72F6E720CF68BB0036A542 /* DrawerDataSource.swift in Sources */,
 				5E72F6D820CF64D00036A542 /* DrawerComponentCoordinator.swift in Sources */,
 				5E72F6E320CF68A50036A542 /* DrawerInteraction.swift in Sources */,
