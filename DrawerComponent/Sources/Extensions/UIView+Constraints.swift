@@ -10,13 +10,13 @@ import Foundation
 
 extension UIView {
     
-    public func pinToEdges(of other: UIView) {
+    public func pinToEdges(of other: UIView, with padding: UIEdgeInsets = UIEdgeInsets.zero) {
         self.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            other.topAnchor.constraint(equalTo: self.topAnchor),
-            other.bottomAnchor.constraint(equalTo: self.bottomAnchor),
-            other.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            other.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            other.topAnchor.constraint(equalTo: self.topAnchor, constant: padding.top),
+            other.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: padding.bottom),
+            other.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: -padding.left),
+            other.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: padding.right),
             ])
     }
     

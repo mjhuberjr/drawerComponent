@@ -8,19 +8,20 @@
 
 import UIKit
 
-extension UIViewController {
+public extension UIViewController {
     
-    func embed(_ vc: UIViewController) {
+    public func embed(_ vc: UIViewController, into view: UIView, with padding: UIEdgeInsets = UIEdgeInsets.zero) {
         addChildViewController(vc)
         vc.didMove(toParentViewController: self)
         vc.view.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(vc.view)
         
-        pinConstraints(vc.view)
+        pinConstraints(vc.view, into: view, with: padding)
     }
     
-    private func pinConstraints(_ view: UIView) {
-        view.pinToEdges(of: self.view)
+    private func pinConstraints(_ view: UIView, into other: UIView? = nil, with padding: UIEdgeInsets) {
+        let otherView = other ?? self.view!
+        view.pinToEdges(of: otherView, with: padding)
     }
     
 }
