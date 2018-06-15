@@ -103,3 +103,11 @@ private extension DrawerRootViewController {
 // MARK: DrawerAnimatable
 
 extension DrawerRootViewController: DrawerAnimatable { }
+
+extension DrawerRootViewController: UIGestureRecognizerDelegate {
+    
+    public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
+    }
+    
+}
