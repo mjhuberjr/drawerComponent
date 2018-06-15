@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5E21B9E420D40AA200F44343 /* UIView+Passthrough.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E21B9E320D40AA200F44343 /* UIView+Passthrough.swift */; };
 		5E72F6CF20CCD7600036A542 /* DrawerComponent.h in Headers */ = {isa = PBXBuildFile; fileRef = 5E72F6CD20CCD7600036A542 /* DrawerComponent.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5E72F6D820CF64D00036A542 /* DrawerComponentCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E72F6D720CF64D00036A542 /* DrawerComponentCoordinator.swift */; };
 		5E72F6DA20CF64F00036A542 /* DrawerRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E72F6D920CF64F00036A542 /* DrawerRootViewController.swift */; };
@@ -24,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5E21B9E320D40AA200F44343 /* UIView+Passthrough.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Passthrough.swift"; sourceTree = "<group>"; };
 		5E72F6CA20CCD7600036A542 /* DrawerComponent.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DrawerComponent.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E72F6CD20CCD7600036A542 /* DrawerComponent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DrawerComponent.h; sourceTree = "<group>"; };
 		5E72F6CE20CCD7600036A542 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 			children = (
 				5E72F72720D302100036A542 /* UIViewController+Embed.swift */,
 				5E72F72820D302100036A542 /* UIView+Constraints.swift */,
+				5E21B9E320D40AA200F44343 /* UIView+Passthrough.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -216,6 +219,7 @@
 				5E72F6DF20CF68860036A542 /* DrawerState.swift in Sources */,
 				5E72F72A20D302100036A542 /* UIView+Constraints.swift in Sources */,
 				5E72F72920D302100036A542 /* UIViewController+Embed.swift in Sources */,
+				5E21B9E420D40AA200F44343 /* UIView+Passthrough.swift in Sources */,
 				5E72F6E720CF68BB0036A542 /* DrawerDataSource.swift in Sources */,
 				5E72F6D820CF64D00036A542 /* DrawerComponentCoordinator.swift in Sources */,
 				5E72F6E320CF68A50036A542 /* DrawerInteraction.swift in Sources */,
