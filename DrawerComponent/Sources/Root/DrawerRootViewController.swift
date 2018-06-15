@@ -56,6 +56,7 @@ private extension DrawerRootViewController {
     
     func setupDrawerView() {
         let drawer = presenter.dataSource.drawerView
+        drawerView.backgroundColor = .clear
         view.backgroundColor = .clear
         embed(drawer, into: drawerView)
     }
