@@ -17,10 +17,10 @@ public protocol DrawerAnimatable: class {
 
 public extension DrawerAnimatable where Self: UIViewController { }
 
-class DrawerRootViewController: UIViewController {
+public class DrawerRootViewController: UIViewController {
     
     @IBOutlet var drawerView: UIView!
-    @IBOutlet var bottomConstraint: NSLayoutConstraint!
+    @IBOutlet public var bottomConstraint: NSLayoutConstraint!
     
     private var presenter: DrawerComponentPresentation
     var interactor: DrawerInteraction!
@@ -33,13 +33,13 @@ class DrawerRootViewController: UIViewController {
     }
     
     @available(*, unavailable)
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
     // MARK: - Life Cycle
     
-    override func viewDidLoad() {
+    override public func viewDidLoad() {
         super.viewDidLoad()
         
         setupDrawerView()
