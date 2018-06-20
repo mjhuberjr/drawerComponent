@@ -44,10 +44,10 @@ extension DrawerInteractor: DrawerInteraction {
     }
     
     func panChanged(_ recognizer: UIPanGestureRecognizer) {
-        let openOffset = presenter.drawerConfiguration.openOffset
+        let closedOffset = presenter.drawerConfiguration.closedOffset
         
         let translation = recognizer.translation(in: drawerView.view)
-        var fraction = -translation.y / openOffset
+        var fraction = -translation.y / closedOffset
         
         if presenter.state == .open { fraction *= -1 }
         if runningAnimators[0].isReversed { fraction *= -1 }
