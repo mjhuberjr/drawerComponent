@@ -10,18 +10,19 @@ import Foundation
 
 public protocol DrawerDataSource {
     
-    var drawerView: UIViewController { get }
+    var drawerViews: [UIViewController] { get }
     var propertyAnimators: [UIViewPropertyAnimator]? { get }
     
 }
 
 class PrototypeDrawer: DrawerDataSource {
     
-    var drawerView: UIViewController
+    var drawerViews: [UIViewController]
     var propertyAnimators: [UIViewPropertyAnimator]? = nil
     
     init() {
-        drawerView = UIViewController()
+        let drawerView = UIViewController()
+        drawerViews = [drawerView]
         setup(drawerView)
     }
     

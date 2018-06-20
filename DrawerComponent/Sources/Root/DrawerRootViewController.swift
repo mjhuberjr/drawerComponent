@@ -55,10 +55,12 @@ public class DrawerRootViewController: UIViewController {
 private extension DrawerRootViewController {
     
     func setupDrawerView() {
-        let drawer = presenter.dataSource.drawerView
+        let views = presenter.dataSource.drawerViews
         drawerView.backgroundColor = .clear
         view.backgroundColor = .clear
-        embed(drawer, into: drawerView)
+        for view in views {
+            embed(view, into: drawerView)
+        }
     }
     
     func setupStartingPosition() {
