@@ -18,7 +18,7 @@ public protocol DrawerConfigurable {
     
 }
 
-extension DrawerConfigurable {
+public extension DrawerConfigurable {
     
     var drawerEvents: DrawerEvents { return DrawerEventsImpl() }
     var openOffset: CGFloat { return 0.0 }
