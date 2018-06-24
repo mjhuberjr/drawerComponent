@@ -19,7 +19,7 @@ public extension DrawerAnimatable where Self: UIViewController { }
 
 public class DrawerRootViewController: UIViewController {
     
-    @IBOutlet var drawerView: PassthroughView!
+    @IBOutlet var drawerView: UIView!
     @IBOutlet public var bottomConstraint: NSLayoutConstraint!
     
     private var presenter: DrawerComponentPresentation
