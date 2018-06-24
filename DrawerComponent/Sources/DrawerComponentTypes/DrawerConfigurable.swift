@@ -15,6 +15,7 @@ public protocol DrawerConfigurable {
     var drawerEvents: DrawerEvents { get }
     var openOffset: CGFloat { get }
     var closedOffset: CGFloat { get }
+    var allowTapGesture: Bool { get }
     
 }
 
@@ -23,5 +24,6 @@ public extension DrawerConfigurable {
     var drawerEvents: DrawerEvents { return DrawerEventsImpl() }
     var openOffset: CGFloat { return 0.0 }
     var closedOffset: CGFloat { return 440.0 }
+    var allowTapGesture: Bool { return false }
     
 }

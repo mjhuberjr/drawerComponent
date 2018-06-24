@@ -79,7 +79,8 @@ private extension DrawerRootViewController {
     }
     
     func setupGestures() {
-        let panGesture = DrawerPanGestureRecognizer(target: self, action: #selector(drawerPanned(recognizer:)))
+        let allowTap = presenter.drawerConfiguration.allowTapGesture
+        let panGesture = DrawerPanGestureRecognizer(target: self, action: #selector(drawerPanned(recognizer:)), allowTap: allowTap)
         drawerView.addGestureRecognizer(panGesture)
     }
     
