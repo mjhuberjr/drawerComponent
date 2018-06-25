@@ -28,6 +28,8 @@ public class DrawerRootViewController: UIViewController {
     private var presenter: DrawerComponentPresentation
     var interactor: DrawerInteraction!
     
+    var topCornerRadius: CGFloat
+    
     private var isDrawerEnabled: Bool {
         didSet {
             if oldValue == isDrawerEnabled { return }
@@ -35,9 +37,10 @@ public class DrawerRootViewController: UIViewController {
         }
     }
     
-    init(presenter: DrawerComponentPresentation, isDrawerEnabled: Bool) {
+    init(presenter: DrawerComponentPresentation, isDrawerEnabled: Bool, topCornerRadius: CGFloat) {
         self.presenter = presenter
         self.isDrawerEnabled = isDrawerEnabled
+        self.topCornerRadius = topCornerRadius
         
         let bundle = Bundle(for: DrawerRootViewController.self)
         super.init(nibName: nil, bundle: bundle)
@@ -70,12 +73,26 @@ public class DrawerRootViewController: UIViewController {
 private extension DrawerRootViewController {
     
     func setupDrawerView() {
-        let views = presenter.dataSource.drawerViews
         drawerView.backgroundColor = .clear
+        roundTopCorners(view: drawerView)
+        drawerView.clipsToBounds = true
+        
         view.backgroundColor = .clear
+        
+        let views = presenter.dataSource.drawerViews
         for view in views {
             embed(view, into: drawerView)
         }
+    }
+    
+    func roundTopCorners(view: UIView) {
+        let maskPath1 = UIBezierPath(roundedRect: view.bounds,
+                                     byRoundingCorners: [.topLeft , .topRight],
+                                     cornerRadii: CGSize(width: topCornerRadius, height: topCornerRadius))
+        let maskLayer1 = CAShapeLayer()
+        maskLayer1.frame = view.bounds
+        maskLayer1.path = maskPath1.cgPath
+        view.layer.mask = maskLayer1
     }
     
     func setupStartingPosition() {

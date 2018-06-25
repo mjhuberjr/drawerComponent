@@ -37,7 +37,7 @@ public class DrawerComponentCoordinator: DrawerComponentCoordination {
         let dataSource = dataSource ?? PrototypeDrawer()
         let drawerConfiguration = drawerConfigurable ?? DrawerConfigurableImpl()
         let presenter = DrawerComponentPresenter(dataSource: dataSource, drawerConfiguration: drawerConfiguration, startingState: startingState)
-        rootViewController = DrawerRootViewController(presenter: presenter, isDrawerEnabled: isDrawerEnabled)
+        rootViewController = DrawerRootViewController(presenter: presenter, isDrawerEnabled: isDrawerEnabled, topCornerRadius: drawerConfiguration.topCornerRadius)
     }
     
     public func drawerComponentViewController() -> UIViewController {
