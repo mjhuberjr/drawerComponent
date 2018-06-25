@@ -31,8 +31,7 @@ public class DrawerRootViewController: UIViewController {
     private var isDrawerEnabled: Bool {
         didSet {
             if oldValue == isDrawerEnabled { return }
-            if isDrawerEnabled { setupGestures() }
-            removeGestures()
+            if isDrawerEnabled { setupGestures() } else { removeGestures() }
         }
     }
     
