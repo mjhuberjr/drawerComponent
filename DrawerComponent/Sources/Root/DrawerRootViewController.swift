@@ -75,13 +75,13 @@ private extension DrawerRootViewController {
     func setupDrawerView() {
         drawerView.backgroundColor = .clear
         roundTopCorners(view: drawerView)
-        drawerView.clipsToBounds = true
         
         view.backgroundColor = .clear
         
         let views = presenter.dataSource.drawerViews
-        for view in views {
-            embed(view, into: drawerView)
+        for vc in views {
+            roundTopCorners(view: vc.view)
+            embed(vc, into: drawerView)
         }
     }
     

@@ -26,6 +26,6 @@ public extension DrawerConfigurable {
     var openOffset: CGFloat { return 0.0 }
     var closedOffset: CGFloat { return 440.0 }
     var allowTapGesture: Bool { return false }
-    var topCornerRadius: CGFloat { return 6.0 }
+    var topCornerRadius: CGFloat { return 8.0 }
     
 }
