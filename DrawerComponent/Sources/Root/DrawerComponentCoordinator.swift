@@ -14,6 +14,8 @@ public protocol DrawerComponentCoordination: class {
     
     // MARK: - Interactions
     func toggleDrawer()
+    func disableGestures()
+    func enableGestures()
     
 }
 
@@ -31,11 +33,11 @@ public class DrawerComponentCoordinator: DrawerComponentCoordination {
         return nil
     }
     
-    public init(dataSource: DrawerDataSource?, drawerConfigurable: DrawerConfigurable? = nil, startingState: DrawerState = .closed) {
+    public init(dataSource: DrawerDataSource?, drawerConfigurable: DrawerConfigurable? = nil, startingState: DrawerState = .closed, isDrawerEnabled: Bool = true) {
         let dataSource = dataSource ?? PrototypeDrawer()
         let drawerConfiguration = drawerConfigurable ?? DrawerConfigurableImpl()
         let presenter = DrawerComponentPresenter(dataSource: dataSource, drawerConfiguration: drawerConfiguration, startingState: startingState)
-        rootViewController = DrawerRootViewController(presenter: presenter)
+        rootViewController = DrawerRootViewController(presenter: presenter, isDrawerEnabled: isDrawerEnabled)
     }
     
     public func drawerComponentViewController() -> UIViewController {
@@ -50,6 +52,14 @@ extension DrawerComponentCoordinator {
     
     public func toggleDrawer() {
         interactor?.toggleDrawer()
+    }
+    
+    public func disableGestures() {
+        
+    }
+    
+    public func enableGestures() {
+        
     }
     
 }

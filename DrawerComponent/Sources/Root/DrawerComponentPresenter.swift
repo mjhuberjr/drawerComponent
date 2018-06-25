@@ -22,7 +22,17 @@ class DrawerComponentPresenter: DrawerComponentPresentation {
     var dataSource: DrawerDataSource
     var drawerConfiguration: DrawerConfigurable
     
-    var state: DrawerState
+    var state: DrawerState {
+        didSet {
+            let events = drawerConfiguration.drawerEvents
+            if state == .open {
+                events.drawerDidOpen?()
+            }
+            if state == .closed {
+                events.drawerDidClose?()
+            }
+        }
+    }
     
     init(dataSource: DrawerDataSource, drawerConfiguration: DrawerConfigurable, startingState: DrawerState) {
         self.dataSource = dataSource

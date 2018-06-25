@@ -12,6 +12,8 @@ public protocol DrawerAnimatable: class {
     
     var bottomConstraint: NSLayoutConstraint! { get set }
     var view: UIView! { get set }
+
+    func setDrawerEnabled(_ isDrawerEnabled: Bool)
     
 }
 
@@ -22,11 +24,22 @@ public class DrawerRootViewController: UIViewController {
     @IBOutlet var drawerView: UIView!
     @IBOutlet public var bottomConstraint: NSLayoutConstraint!
     
+    private var panGesture: DrawerPanGestureRecognizer?
+    
     private var presenter: DrawerComponentPresentation
     var interactor: DrawerInteraction!
     
-    init(presenter: DrawerComponentPresentation) {
+    private var isDrawerEnabled: Bool {
+        didSet {
+            if oldValue == isDrawerEnabled { return }
+            if isDrawerEnabled { setupGestures() }
+            removeGestures()
+        }
+    }
+    
+    init(presenter: DrawerComponentPresentation, isDrawerEnabled: Bool) {
         self.presenter = presenter
+        self.isDrawerEnabled = isDrawerEnabled
         
         let bundle = Bundle(for: DrawerRootViewController.self)
         super.init(nibName: nil, bundle: bundle)
@@ -45,7 +58,11 @@ public class DrawerRootViewController: UIViewController {
         setupDrawerView()
         setupStartingPosition()
         setupInteractor()
-        setupGestures()
+        if isDrawerEnabled { setupGestures() }
+    }
+    
+    public func setDrawerEnabled(_ isDrawerEnabled: Bool) {
+        self.isDrawerEnabled = isDrawerEnabled
     }
     
 }
@@ -80,8 +97,15 @@ private extension DrawerRootViewController {
     
     func setupGestures() {
         let allowTap = presenter.drawerConfiguration.allowTapGesture
-        let panGesture = DrawerPanGestureRecognizer(target: self, action: #selector(drawerPanned(recognizer:)), allowTap: allowTap)
-        drawerView.addGestureRecognizer(panGesture)
+        panGesture = DrawerPanGestureRecognizer(target: self, action: #selector(drawerPanned(recognizer:)), allowTap: allowTap)
+        panGesture?.delegate = self
+        drawerView.addGestureRecognizer(panGesture!)
+    }
+    
+    func removeGestures() {
+        if let panGesture = panGesture {
+            drawerView.removeGestureRecognizer(panGesture)
+        }
     }
     
     @objc func drawerPanned(recognizer: UIPanGestureRecognizer) {

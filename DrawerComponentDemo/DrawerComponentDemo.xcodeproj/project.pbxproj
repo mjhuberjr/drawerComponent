@@ -12,6 +12,7 @@
 		5E72F70920D0C4DB0036A542 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E72F70720D0C4DB0036A542 /* LaunchScreen.storyboard */; };
 		5E72F71220D0C5730036A542 /* DrawerComponent.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E72F71120D0C5730036A542 /* DrawerComponent.framework */; };
 		5E72F71320D0C5730036A542 /* DrawerComponent.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5E72F71120D0C5730036A542 /* DrawerComponent.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5EEACD4D20E067820035748B /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEACD4C20E067820035748B /* TableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -35,6 +36,7 @@
 		5E72F70820D0C4DB0036A542 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5E72F70A20D0C4DB0036A542 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5E72F71120D0C5730036A542 /* DrawerComponent.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DrawerComponent.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5EEACD4C20E067820035748B /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +73,7 @@
 			isa = PBXGroup;
 			children = (
 				5E72F6FE20D0C4DA0036A542 /* AppDelegate.swift */,
+				5EEACD4C20E067820035748B /* TableViewController.swift */,
 				5E72F70520D0C4DB0036A542 /* Assets.xcassets */,
 				5E72F70720D0C4DB0036A542 /* LaunchScreen.storyboard */,
 				5E72F70A20D0C4DB0036A542 /* Info.plist */,
@@ -157,6 +160,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5E72F6FF20D0C4DA0036A542 /* AppDelegate.swift in Sources */,
+				5EEACD4D20E067820035748B /* TableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -15,7 +15,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        let rootCoordinator = DrawerComponentCoordinator(dataSource: nil)
+        class DrawerComponentDataSource: DrawerDataSource {
+            var drawerViews: [UIViewController]
+            var propertyAnimators: [UIViewPropertyAnimator]? = nil
+            init() {
+                let vc = TableViewController()
+                drawerViews = [vc]
+            }
+        }
+        
+        let dataSource = DrawerComponentDataSource()
+        let rootCoordinator = DrawerComponentCoordinator(dataSource: dataSource)
         
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = rootCoordinator.drawerComponentViewController()
