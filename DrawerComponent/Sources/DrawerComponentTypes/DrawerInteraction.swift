@@ -15,6 +15,7 @@ protocol DrawerInteraction: class {
     func panShouldEndEarly(_ velocity: CGFloat) -> Bool
     func panEnded(_ recognizer: UIPanGestureRecognizer, shouldClose: Bool)
     func toggleDrawer()
+    func setDrawerEnabled(_ isEnabled: Bool)
     
 }
 
@@ -80,6 +81,10 @@ extension DrawerInteractor: DrawerInteraction {
         animateIfNeeded(to: presenter.state.next, duration: 1)
         runningAnimators.forEach { $0.pauseAnimation() }
         animationProgress = runningAnimators.map { $0.fractionComplete }
+    }
+    
+    func setDrawerEnabled(_ isEnabled: Bool) {
+        drawerView.setDrawerEnabled(isEnabled)
     }
     
 }

@@ -13,8 +13,7 @@ public protocol DrawerAnimatable: class {
     var bottomConstraint: NSLayoutConstraint! { get set }
     var view: UIView! { get set }
 
-    func setDrawerEnabled(_ isDrawerEnabled: Bool)
-    
+    func setDrawerEnabled(_ isEnabled: Bool)
 }
 
 public extension DrawerAnimatable where Self: UIViewController { }
@@ -61,8 +60,8 @@ public class DrawerRootViewController: UIViewController {
         if isDrawerEnabled { setupGestures() }
     }
     
-    public func setDrawerEnabled(_ isDrawerEnabled: Bool) {
-        self.isDrawerEnabled = isDrawerEnabled
+    public func setDrawerEnabled(_ isEnabled: Bool) {
+        isDrawerEnabled = isEnabled
     }
     
 }

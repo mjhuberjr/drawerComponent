@@ -55,11 +55,11 @@ extension DrawerComponentCoordinator {
     }
     
     public func disableGestures() {
-        
+        interactor?.setDrawerEnabled(false)
     }
     
     public func enableGestures() {
-        
+        interactor?.setDrawerEnabled(true)
     }
     
 }
